@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include <string>
+#include <windows.h>
 
 namespace Project1 {
 
@@ -53,6 +54,8 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
 
+
+
 	protected:
 
 	private:
@@ -62,7 +65,7 @@ namespace Project1 {
 
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
@@ -190,15 +193,15 @@ namespace Project1 {
 			// dataGridView1
 			// 
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Raised;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::Color::MediumSpringGreen;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::MediumSpringGreen;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Status,
@@ -326,7 +329,7 @@ namespace Project1 {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"MyForm";
+			this->Text = L"Proxy Checker";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -351,6 +354,8 @@ namespace Project1 {
 
 		this->button2->Visible = true;
 		this->button3->Visible = true;
+
+		this->Text = "Proxy Checker - пожалуйста, подождите, идёт проверка прокси (приложение может зависнуть)";
 
 		String^ text = textBox1->Text;
 
@@ -392,6 +397,8 @@ namespace Project1 {
 
 		delete text;
 		delete[] lines;
+
+		this->Text = "Proxy Checker - проверка завершена";
 
 		System::IO::StreamReader^ sr = gcnew System::IO::StreamReader("proxy_info.txt");
 		array<wchar_t>^ splitBy = { ' ' };
