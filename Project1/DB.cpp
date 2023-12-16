@@ -43,7 +43,7 @@ void add_server(std::string ip_port, std::string login, std::string password)
     sqlite3_close(DB);
 }
 
-void read_servers(std::string key, bool http, bool socks4, bool socks5, bool non_working, std::ofstream& outputFile)
+void read_servers(std::string key, bool http, bool socks4, bool socks5, bool non_working, std::ofstream& outputFile, bool& isWrite)
 {
     sqlite3* DB;
     char* messaggeError;
@@ -79,7 +79,7 @@ void read_servers(std::string key, bool http, bool socks4, bool socks5, bool non
         int port = std::stoi(rest);
 
         //pass all parameters to the check function
-        checkProxyInfo(ip, port, key, http, socks4, socks5, non_working, username, password, outputFile);
+        checkProxyInfo(ip, port, key, http, socks4, socks5, non_working, username, password, outputFile, isWrite);
     }
 }
 

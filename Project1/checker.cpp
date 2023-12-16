@@ -63,7 +63,7 @@ bool checkProxy(const std::string& ip, int port, const std::string& targetURL, d
     return false;
 }
 
-void checkProxyInfo(const std::string& ip, int port, const std::string& key, bool http, bool socks4, bool socks5, bool non_working, std::string& username, std::string& password, std::ofstream& outputFile) {
+void checkProxyInfo(const std::string& ip, int port, const std::string& key, bool http, bool socks4, bool socks5, bool non_working, std::string& username, std::string& password, std::ofstream& outputFile, bool& isWrite) {
 
     CURL* curl = curl_easy_init();
     struct MemoryStruct chunk;
@@ -110,9 +110,11 @@ void checkProxyInfo(const std::string& ip, int port, const std::string& key, boo
 
                             if (!username.empty() && !password.empty()) {
                                 outputFile << status << " " << ip << ":" << port << " " << username << " " << password << " " << responseTime << " " << country << "\n";
+                                isWrite = true;
                             }
                             else {
                                 outputFile << status << " " << ip << ":" << port << " ---" << " ---"<< " " << responseTime << " " << country << "\n";
+                                isWrite = true;
                             }
                         }
                     }
@@ -137,7 +139,7 @@ void checkProxyInfo(const std::string& ip, int port, const std::string& key, boo
     }
 }
 
-bool start(bool http, bool socks4, bool socks5, bool non_working) {
+bool start(bool http, bool socks4, bool socks5, bool non_working, bool& isWrite) {
 
     std::ofstream outputFile("result.txt");
 
@@ -145,7 +147,7 @@ bool start(bool http, bool socks4, bool socks5, bool non_working) {
     std::string key = "yb0r04-06c337-0644n8-750231";
 
     //read list from DB
-    read_servers(key, http, socks4, socks5, non_working, outputFile);
+    read_servers(key, http, socks4, socks5, non_working, outputFile, isWrite);
 
     if (!outputFile.is_open()) {
         std::cerr << "Cannot open file to write proxy info" << std::endl;

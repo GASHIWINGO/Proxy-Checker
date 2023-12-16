@@ -37,8 +37,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="proxy_info.txt" />
-    <Text Include="proxy_list.txt" />
+    <Text Include="result.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
