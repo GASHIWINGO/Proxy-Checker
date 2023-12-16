@@ -1,1 +1,1 @@
-# proxy checking with gui
+# checking proxy with gui
