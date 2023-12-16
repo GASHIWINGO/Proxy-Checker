@@ -48,6 +48,7 @@ bool checkProxy(const std::string& ip, int port, const std::string& targetURL, d
         CURLcode res = curl_easy_perform(curl);
 
         if (res == CURLE_OK) {
+
             // time response
             curl_easy_getinfo(curl, CURLINFO_TOTAL_TIME, &totalTime);
             responseTime = totalTime;
@@ -62,7 +63,7 @@ bool checkProxy(const std::string& ip, int port, const std::string& targetURL, d
     return false;
 }
 
-void checkProxyInfo(const std::string& ip, int port, const std::string& key, std::ofstream& outputFile, bool http, bool socks4, bool socks5, bool non_working, std::string& username, std::string& password) {
+void checkProxyInfo(const std::string& ip, int port, const std::string& key, bool http, bool socks4, bool socks5, bool non_working, std::string& username, std::string& password, std::ofstream& outputFile) {
 
     CURL* curl = curl_easy_init();
     struct MemoryStruct chunk;
@@ -88,7 +89,7 @@ void checkProxyInfo(const std::string& ip, int port, const std::string& key, std
 
                     std::string status;
 
-                    double responseTime;
+                    double responseTime = 0;
                     if ((http && (proxyType == "HTTP" || proxyType == "HTTPS" || proxyType == "Business")) ||
                         (socks4 && proxyType == "SOCKS4") ||
                         (socks5 && proxyType == "SOCKS5")) {
@@ -103,6 +104,10 @@ void checkProxyInfo(const std::string& ip, int port, const std::string& key, std
                         }
 
                         if (isWorking || non_working) {
+
+                            //add info in DB after check 
+                            insert_checked_servers(ip, port, status, responseTime, country, username, password);
+
                             if (!username.empty() && !password.empty()) {
                                 outputFile << status << " " << ip << ":" << port << " " << username << " " << password << " " << responseTime << " " << country << "\n";
                             }
@@ -133,59 +138,21 @@ void checkProxyInfo(const std::string& ip, int port, const std::string& key, std
 }
 
 bool start(bool http, bool socks4, bool socks5, bool non_working) {
-    setlocale(0, "");
 
-    std::ifstream proxyFile("proxy_list.txt");
+    std::ofstream outputFile("result.txt");
 
+    //api key
     std::string key = "yb0r04-06c337-0644n8-750231";
 
-    std::string outputFileName = "proxy_info.txt";
-
-    std::ofstream outputFile(outputFileName.c_str());
-
-    if (!proxyFile.is_open()) {
-        std::cerr << "Cannot open file with proxy servers" << std::endl;
-        return 1;
-    }
+    //read list from DB
+    read_servers(key, http, socks4, socks5, non_working, outputFile);
 
     if (!outputFile.is_open()) {
         std::cerr << "Cannot open file to write proxy info" << std::endl;
-        proxyFile.close();
+        outputFile.close();
         return 1;
     }
 
-    std::string proxy;
-
-    std::regex ipPattern("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
-    std::regex portPattern("^[0-9]{1,5}$");
-
-    while (std::getline(proxyFile, proxy)) {
-        std::string ip = "";
-        int port = 0;
-        std::string username = "";
-        std::string password = "";
-
-        size_t colonCount = std::count(proxy.begin(), proxy.end(), ':');
-        if (colonCount == 1 || colonCount == 3) {
-            ip = proxy.substr(0, proxy.find(':'));
-            std::string rest = proxy.substr(proxy.find(':') + 1);
-
-            if (std::regex_match(ip, ipPattern) && (colonCount == 1 && std::regex_match(rest, portPattern) || colonCount == 3 && std::regex_match(rest.substr(0, rest.find(':')), portPattern))) {
-                if (colonCount == 1) {
-                    port = std::stoi(rest);
-                }
-                else if (colonCount == 3) {
-                    port = std::stoi(rest.substr(0, rest.find(':')));
-                    username = rest.substr(rest.find(':') + 1, rest.rfind(':') - rest.find(':') - 1);
-                    password = rest.substr(rest.rfind(':') + 1);
-                }
-
-                checkProxyInfo(ip, port, key, outputFile, http, socks4, socks5, non_working, username, password);
-            }
-        }
-    }
-
-    proxyFile.close();
     outputFile.close();
 
     return 1;

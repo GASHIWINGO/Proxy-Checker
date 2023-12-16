@@ -82,7 +82,7 @@
       <AdditionalIncludeDirectories>E:\cpprepos\curl-8.4.0\x64 Debug\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;E:\cpprepos\curl-8.4.0\x64 Debug\lib\libcurl_a_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;E:\cpprepos\curl-8.4.0\x64 Debug\lib\libcurl_a_debug.lib;E:\2\Project1\Project1\sqlite\sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -127,10 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="checker.cpp" />
-    <ClCompile Include="interface.cpp" />
+    <ClCompile Include="DB.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checker.h" />
+    <ClInclude Include="DB.h" />
     <ClInclude Include="interface.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -143,6 +145,9 @@
   <ItemGroup>
     <Text Include="proxy_info.txt" />
     <Text Include="proxy_list.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
