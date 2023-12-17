@@ -491,6 +491,9 @@ namespace Project1 {
 		this->backButton->Visible = true;
 	}
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		this->Text = "Proxy Checker";
+
 		this->label1->Visible = true;
 		this->label2->Visible = true;
 		this->label3->Visible = true;

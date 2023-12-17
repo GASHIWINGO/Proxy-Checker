@@ -146,14 +146,14 @@ bool start(bool http, bool socks4, bool socks5, bool non_working, bool& isWrite)
     //api key
     std::string key = "yb0r04-06c337-0644n8-750231";
 
-    //read list from DB
-    read_servers(key, http, socks4, socks5, non_working, outputFile, isWrite);
-
     if (!outputFile.is_open()) {
         std::cerr << "Cannot open file to write proxy info" << std::endl;
         outputFile.close();
         return 1;
     }
+
+    //read list from DB and start checking
+    read_servers(key, http, socks4, socks5, non_working, outputFile, isWrite);
 
     outputFile.close();
 
