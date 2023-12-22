@@ -30,7 +30,7 @@ bool checkProxy(const std::string& ip, int port, const std::string& targetURL, d
         curl_easy_setopt(curl, CURLOPT_URL, targetURL.c_str());
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void*)&chunk);
-        curl_easy_setopt(curl, CURLOPT_TIMEOUT, 5L);
+        curl_easy_setopt(curl, CURLOPT_TIMEOUT, 3L);
 
         double totalTime;
 
@@ -63,7 +63,7 @@ bool checkProxy(const std::string& ip, int port, const std::string& targetURL, d
     return false;
 }
 
-void checkProxyInfo(const std::string& ip, int port, const std::string& key, bool http, bool socks4, bool socks5, bool non_working, std::string& username, std::string& password, std::ofstream& outputFile, bool& isWrite) {
+void checkProxyInfo(const std::string& ip, int port, const std::string& key, bool http, bool socks4, bool socks5, bool non_working, std::string& username, std::string& password, bool& isWrite) {
 
     CURL* curl = curl_easy_init();
     struct MemoryStruct chunk;
@@ -108,14 +108,7 @@ void checkProxyInfo(const std::string& ip, int port, const std::string& key, boo
                             //add info in DB after check 
                             insert_checked_servers(ip, port, status, responseTime, country, username, password);
 
-                            if (!username.empty() && !password.empty()) {
-                                outputFile << status << " " << ip << ":" << port << " " << username << " " << password << " " << responseTime << " " << country << "\n";
-                                isWrite = true;
-                            }
-                            else {
-                                outputFile << status << " " << ip << ":" << port << " ---" << " ---"<< " " << responseTime << " " << country << "\n";
-                                isWrite = true;
-                            }
+                            isWrite = true;
                         }
                     }
                     else {
@@ -141,21 +134,11 @@ void checkProxyInfo(const std::string& ip, int port, const std::string& key, boo
 
 bool start(bool http, bool socks4, bool socks5, bool non_working, bool& isWrite) {
 
-    std::ofstream outputFile("result.txt");
-
     //api key
     std::string key = "yb0r04-06c337-0644n8-750231";
 
-    if (!outputFile.is_open()) {
-        std::cerr << "Cannot open file to write proxy info" << std::endl;
-        outputFile.close();
-        return 1;
-    }
-
     //read list from DB and start checking
-    read_servers(key, http, socks4, socks5, non_working, outputFile, isWrite);
-
-    outputFile.close();
+    read_servers(key, http, socks4, socks5, non_working, isWrite);
 
     return 1;
 }

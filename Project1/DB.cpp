@@ -43,7 +43,7 @@ void add_server(std::string ip_port, std::string login, std::string password)
     sqlite3_close(DB);
 }
 
-void read_servers(std::string key, bool http, bool socks4, bool socks5, bool non_working, std::ofstream& outputFile, bool& isWrite)
+void read_servers(std::string key, bool http, bool socks4, bool socks5, bool non_working, bool& isWrite)
 {
     sqlite3* DB;
     char* messaggeError;
@@ -79,7 +79,7 @@ void read_servers(std::string key, bool http, bool socks4, bool socks5, bool non
         int port = std::stoi(rest);
 
         //pass all parameters to the check function
-        checkProxyInfo(ip, port, key, http, socks4, socks5, non_working, username, password, outputFile, isWrite);
+        checkProxyInfo(ip, port, key, http, socks4, socks5, non_working, username, password, isWrite);
     }
 }
 
@@ -119,4 +119,41 @@ void insert_checked_servers(const std::string& ip, int port, const std::string& 
 
     sqlite3_finalize(stmt);
     sqlite3_close(db);
+}
+
+std::vector<std::vector<std::string>> read_checked_servers()
+{
+    sqlite3* db;
+    int rc = sqlite3_open("proxy_checker.db", &db);
+
+    std::string sql = "SELECT cps.status, cps.ip_port, cps.login, cps.password, cps.response_time, cps.country, cps.server_id "
+        "FROM checked_proxy_servers cps "
+        "JOIN Proxy_servers ps ON cps.server_id = ps.server_id "
+        "JOIN User u ON ps.user_id = u.user_id "
+        "WHERE u.user_id = (SELECT MAX(user_id) FROM User)";
+
+    sqlite3_stmt* stmt;
+    rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0);
+
+    if (rc != SQLITE_OK) {
+        std::cout << "Failed to fetch data: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return {};
+    }
+
+    std::vector<std::vector<std::string>> data;
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        std::vector<std::string> row;
+        for (int i = 0; i < sqlite3_column_count(stmt); i++)
+        {
+            row.push_back(std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i))));
+        }
+        data.push_back(row);
+    }
+
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
+
+    return data;
 }

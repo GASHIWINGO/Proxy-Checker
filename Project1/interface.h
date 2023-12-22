@@ -80,8 +80,8 @@ namespace Project1 {
 
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->CheckHTTP = (gcnew System::Windows::Forms::CheckBox());
@@ -133,7 +133,7 @@ namespace Project1 {
 			this->CheckHTTP->CheckAlign = System::Drawing::ContentAlignment::TopLeft;
 			this->CheckHTTP->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->CheckHTTP->Location = System::Drawing::Point(508, 103);
+			this->CheckHTTP->Location = System::Drawing::Point(508, 68);
 			this->CheckHTTP->Name = L"CheckHTTP";
 			this->CheckHTTP->Size = System::Drawing::Size(123, 25);
 			this->CheckHTTP->TabIndex = 2;
@@ -163,9 +163,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label2->Location = System::Drawing::Point(503, 25);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(146, 30);
+			this->label2->Size = System::Drawing::Size(131, 30);
 			this->label2->TabIndex = 7;
-			this->label2->Text = L"Отображать:";
+			this->label2->Text = L"Проверять:";
 			// 
 			// CheckSOCKS4
 			// 
@@ -175,7 +175,7 @@ namespace Project1 {
 			this->CheckSOCKS4->CheckAlign = System::Drawing::ContentAlignment::TopLeft;
 			this->CheckSOCKS4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->CheckSOCKS4->Location = System::Drawing::Point(508, 138);
+			this->CheckSOCKS4->Location = System::Drawing::Point(508, 103);
 			this->CheckSOCKS4->Name = L"CheckSOCKS4";
 			this->CheckSOCKS4->Size = System::Drawing::Size(88, 25);
 			this->CheckSOCKS4->TabIndex = 8;
@@ -190,7 +190,7 @@ namespace Project1 {
 			this->CheckSOCKS5->CheckAlign = System::Drawing::ContentAlignment::TopLeft;
 			this->CheckSOCKS5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->CheckSOCKS5->Location = System::Drawing::Point(508, 173);
+			this->CheckSOCKS5->Location = System::Drawing::Point(508, 138);
 			this->CheckSOCKS5->Name = L"CheckSOCKS5";
 			this->CheckSOCKS5->Size = System::Drawing::Size(88, 25);
 			this->CheckSOCKS5->TabIndex = 9;
@@ -205,11 +205,11 @@ namespace Project1 {
 			this->CheckNonW->CheckAlign = System::Drawing::ContentAlignment::TopLeft;
 			this->CheckNonW->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->CheckNonW->Location = System::Drawing::Point(508, 68);
+			this->CheckNonW->Location = System::Drawing::Point(12, 279);
 			this->CheckNonW->Name = L"CheckNonW";
-			this->CheckNonW->Size = System::Drawing::Size(131, 25);
+			this->CheckNonW->Size = System::Drawing::Size(278, 25);
 			this->CheckNonW->TabIndex = 10;
-			this->CheckNonW->Text = L"Non-working";
+			this->CheckNonW->Text = L"Отображать нерабочие прокси";
 			this->CheckNonW->UseVisualStyleBackColor = false;
 			// 
 			// GridResults
@@ -218,15 +218,15 @@ namespace Project1 {
 			this->GridResults->AllowUserToDeleteRows = false;
 			this->GridResults->AllowUserToResizeRows = false;
 			this->GridResults->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::Raised;
-			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
-			dataGridViewCellStyle7->BackColor = System::Drawing::SystemColors::AppWorkspace;
-			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::AppWorkspace;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			dataGridViewCellStyle7->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::MediumSpringGreen;
-			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->GridResults->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::MediumSpringGreen;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->GridResults->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->GridResults->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->GridResults->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Status, this->Adress,
@@ -236,15 +236,15 @@ namespace Project1 {
 			this->GridResults->Location = System::Drawing::Point(-45, -4);
 			this->GridResults->Name = L"GridResults";
 			this->GridResults->ReadOnly = true;
-			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
-			dataGridViewCellStyle8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)),
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			dataGridViewCellStyle8->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::Color::MediumSpringGreen;
-			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::Color::Black;
-			this->GridResults->RowsDefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::MediumSpringGreen;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Black;
+			this->GridResults->RowsDefaultCellStyle = dataGridViewCellStyle4;
 			this->GridResults->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->GridResults->Size = System::Drawing::Size(736, 311);
 			this->GridResults->TabIndex = 11;
@@ -298,11 +298,11 @@ namespace Project1 {
 			this->labelResults->AutoSize = true;
 			this->labelResults->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->labelResults->Location = System::Drawing::Point(177, 319);
+			this->labelResults->Location = System::Drawing::Point(290, 319);
 			this->labelResults->Name = L"labelResults";
-			this->labelResults->Size = System::Drawing::Size(403, 21);
+			this->labelResults->Size = System::Drawing::Size(375, 21);
 			this->labelResults->TabIndex = 14;
-			this->labelResults->Text = L"Результаты проверки сохранены в файл result.txt";
+			this->labelResults->Text = L"Валидные прокси сохранены в файл result.txt";
 			this->labelResults->Visible = false;
 			// 
 			// backButton
@@ -327,29 +327,29 @@ namespace Project1 {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(369, 310);
+			this->label3->Location = System::Drawing::Point(505, 229);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(211, 17);
+			this->label3->Size = System::Drawing::Size(58, 17);
 			this->label3->TabIndex = 16;
-			this->label3->Text = L"IP:PORT для публичных прокси";
+			this->label3->Text = L"IP:PORT";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(368, 330);
+			this->label4->Location = System::Drawing::Point(505, 255);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(287, 17);
+			this->label4->Size = System::Drawing::Size(122, 17);
 			this->label4->TabIndex = 17;
-			this->label4->Text = L"IP:PORT:LOGIN:PASS для приватных прокси";
+			this->label4->Text = L"IP:PORT:LOG:PASS";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(369, 290);
+			this->label5->Location = System::Drawing::Point(505, 203);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(105, 17);
 			this->label5->TabIndex = 18;
@@ -386,6 +386,49 @@ namespace Project1 {
 
 		}
 #pragma endregion
+	
+	private: System::Void WriteValidServersToFile(const std::vector<std::vector<std::string>>& data)
+	{
+		std::ofstream file("result.txt");
+
+		if (!file.is_open()) {
+			std::cerr << "Cannot open file to write proxy info" << std::endl;
+			file.close();
+			return;
+		}
+
+		for (const auto& row : data) {
+			if (row[0] == "Valid") {
+				file << row[1];
+
+				if (!row[2].empty() && !row[3].empty()) {
+					file << ":" << row[2] << ":" << row[3];
+				}
+
+				file << "\n";
+			}
+		}
+
+		file.close();
+	}
+
+	private: System::Void FillGridResults(bool isWrite)
+	{
+		if (isWrite) {
+
+			std::vector<std::vector<std::string>> data = read_checked_servers();
+
+			WriteValidServersToFile(data);
+
+			for (const auto& row : data) {
+				int rowIndex = GridResults->Rows->Add();
+				for (int i = 0; i < GridResults->ColumnCount; i++)
+				{
+					GridResults->Rows[rowIndex]->Cells[i]->Value = gcnew String(row[i].c_str());
+				}
+			}
+		}
+	}
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->label1->Visible = false;
@@ -442,6 +485,9 @@ namespace Project1 {
 			}
 		}
 
+		delete text;
+		delete[] lines;
+
 		bool http = this->CheckHTTP->Checked;
 		bool socks4 = this->CheckSOCKS4->Checked;
 		bool socks5 = this->CheckSOCKS5->Checked;
@@ -452,43 +498,12 @@ namespace Project1 {
 		//start main function for checking
 		start(http, socks4, socks5, non_working, isWrite);
 
-		delete text;
-		delete[] lines;
-
 		this->Text = "Proxy Checker - проверка завершена";
 
-		if (isWrite) {
-
-			this->labelResults->Visible = true;
-
-			System::IO::StreamReader^ sr = gcnew System::IO::StreamReader("result.txt");
-
-			array<wchar_t>^ splitBy = { ' ' };
-			for (;;)
-			{
-				String^ line = sr->ReadLine();
-				if (line == nullptr) break;
-				if (line->Length > 0)
-				{
-					array<String^>^ parts = line->Split(splitBy, StringSplitOptions::RemoveEmptyEntries);
-					int rowIndex = GridResults->Rows->Add();
-					for (int i = 0; i < GridResults->ColumnCount; i++)
-					{
-						if (i < parts->Length)
-						{
-							GridResults->Rows[rowIndex]->Cells[i]->Value = parts[i];
-						}
-						else
-						{
-							GridResults->Rows[rowIndex]->Cells[i]->Value = "-";
-						}
-					}
-				}
-			}
-			sr->Close();
-		}
+		FillGridResults(isWrite);
 
 		this->backButton->Visible = true;
+		this->labelResults->Visible = true;
 	}
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
