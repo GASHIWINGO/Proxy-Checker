@@ -6,7 +6,7 @@ void add_user()
     char* messaggeError;
     int exit = sqlite3_open("proxy_checker.db", &DB);
 
-    std::string sql("INSERT INTO User (login_date) VALUES (datetime('now'));");
+    std::string sql("INSERT INTO User (login_date) VALUES (datetime('now', 'localtime'));");
 
     exit = sqlite3_exec(DB, sql.c_str(), NULL, 0, &messaggeError);
 

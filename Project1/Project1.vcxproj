@@ -82,7 +82,7 @@
       <AdditionalIncludeDirectories>E:\cpprepos\curl-8.4.0\x64 Debug\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;E:\cpprepos\curl-8.4.0\x64 Debug\lib\libcurl_a_debug.lib;E:\2\Project1\Project1\sqlite\sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Normaliz.lib;Ws2_32.lib;Wldap32.lib;Crypt32.lib;advapi32.lib;E:\cpprepos\curl-8.4.0\x64 Debug\lib\libcurl_a_debug.lib;E:\Proxy-Checker\Project1\sqlite\sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
