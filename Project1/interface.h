@@ -410,6 +410,8 @@ namespace Project1 {
 		}
 
 		file.close();
+
+		this->labelResults->Visible = true;
 	}
 
 	private: System::Void FillGridResults(bool isWrite)
@@ -503,7 +505,7 @@ namespace Project1 {
 		FillGridResults(isWrite);
 
 		this->backButton->Visible = true;
-		this->labelResults->Visible = true;
+		
 	}
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
